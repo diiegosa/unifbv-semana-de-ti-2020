@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: unifbv-semana-ti-db
+  min_messages: WARNING
+  pool: 5
+  username: postgres
+  host: db
+
+production:
+  <<: *default
+  database: unifbv_semana_ti_production
+  username: unifbv_semana_ti
+  password: <%= ENV['UNIFBV_SEMANA_TI_DATABASE_PASSWORD'] %>
